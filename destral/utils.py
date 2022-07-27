@@ -45,6 +45,7 @@ def detect_module(path):
         path = os.path.join(*stack)
         module = stack.pop()
         if not os.path.isdir(path):
+            logger.info('No es dir :{}, module: {}'.format(path, module))
             continue
         files = os.listdir(path)
         logger.info('Files del dir :{}, son: {}'.format(path, ','.join(files)))
