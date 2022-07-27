@@ -34,7 +34,10 @@ def detect_module(path):
     :param path: to examine
     :return: None if is not a module or the module name
     """
+    logger = logging.getLogger('destral.cli')
+
     stack = path.split(os.path.sep)
+    logger.info('Detect module path:{}, stack: {}'.format(path, ','.join(stack)))
     if not stack[0]:
         stack[0] = os.path.sep
     stack = [x for x in stack if x]
@@ -45,7 +48,9 @@ def detect_module(path):
             continue
         files = os.listdir(path)
         if '__terp__.py' in files:
+            logger.info('Detect module path:{}, stack: {}'.format(path, ','.join(stack)))
             return module
+    logger.info('Not detected module for path:{} '.format(path))
     return None
 
 
