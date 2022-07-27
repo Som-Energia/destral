@@ -47,6 +47,7 @@ def detect_module(path):
         if not os.path.isdir(path):
             continue
         files = os.listdir(path)
+        logger.info('Files del dir :{}, son: {}'.format(path, ','.join(files)))
         if '__terp__.py' in files:
             logger.info('Detect module path:{}, stack: {}'.format(path, ','.join(stack)))
             return module
